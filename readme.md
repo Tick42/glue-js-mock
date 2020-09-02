@@ -48,9 +48,7 @@ The mock code should be moved into your application and can be extended/modified
 ## Tests
 We use puppeteer to test the app in this sample, however the mock is not tied up to puppeteer and can be used with any other 
 
-### Accessing the mocked glue
-
-# Running the tests
+To run the tests use
 ```script
 npm i 
 npm test
