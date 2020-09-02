@@ -6,10 +6,12 @@ This repo shows how a Glue42 enabled application can be tested outside of Glue42
 # Details
 
 The repo contains a simple Glue42 enabled application that does the following:
-* registers a Glue42 interop method - when invoked a div is updated with the argument of the interop call
-* when the "Get external data" button is clicked it invokes external interop method and displays the result in a div
-* displays the context of the currently selected color channel in a dive
-* when the "Update channel" button is clicked updates the context of the current color channel
+* Interop related
+  * registers a Glue42 interop method - when invoked a div is updated with the argument of the interop call
+  * when the "Get external data" button is clicked it invokes external interop method and displays the result in a div
+* Channels related
+  * displays the context of the currently selected color channel in a div
+  * when the "Update channel" button is clicked updates the context of the current color channel
 
 Those functionalities aim to demonstrate simple Glue42 integrations that are typical for a real Glue42 enabled application.
 
