@@ -26,6 +26,7 @@ You can detect if you're running in Glue42 by checking if the glue42gd is attach
 ```javascript
 // main.ts
 import GlueFactory, { Glue42 } from "@glue42/desktop";
+import { MockGlueJS } from "../mock/mock";
 
 ....
 
