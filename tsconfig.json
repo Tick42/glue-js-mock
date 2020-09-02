@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "module": "ESNext",
+        "declaration": false,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "target": "ES5",
+        "pretty": true,
+        "removeComments": true,
+        "lib": [
+            "dom",
+            "es5",
+            "es6",
+            "scripthost",
+            "es2015.promise",
+            "es2015.symbol"
+        ]
+    },
+    "include": [
+        "./src/**/*",
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}
