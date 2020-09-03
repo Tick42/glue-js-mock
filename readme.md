@@ -52,7 +52,7 @@ The mock code should be moved into your application and can be extended/modified
 ## Tests
 We use puppeteer to test the app in this sample, however the mock is not tied up to puppeteer and can be used other tools.
 
-Let's dissect one of the tests that verifies that when a button is pressed external interop method is called and a div is updated with the result of that method
+Let's dissect one of the tests that verifies that pressing a button on the page updates a div with the result of an external interop method.
 
 As a first step we register a new interop method that will be invoked by the web. We access the mocked glue which is attached to the window object to do so:
 
@@ -64,14 +64,14 @@ await page.evaluate((method, result) => {
 }, INTEROP_GET_TEXT_METHOD_NAME, result);
 ```
 
-Then we simulate a button click - this should call the method registered before and update the div in the page
+Then we simulate a button click - this should call the method registered before and update the div in the page:
 
 ```javascript
 // press the button
 await page.click("#interop-get-external-data-button");
 ```
 
-As a last step we verify that this actually happened by extracting the text in the div and comparing it to the result returned by the interop method
+As a last step we verify that this actually happened by extracting the text in the div and comparing it to the result returned by the interop method:
 ```javascript
 // get the div text and compare
 const element = await page.$(`#${INTEROP_GET_TEXT_DIV_NAME}`);
