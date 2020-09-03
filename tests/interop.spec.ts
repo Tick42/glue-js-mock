@@ -39,14 +39,12 @@ describe("interop", function () {
     expect(innerText).toEqual(JSON.stringify(invokeArgument));
   });
 
-  test(`pressing a button calls ${INTEROP_GET_TEXT_METHOD_NAME} updates the ${INTEROP_GET_TEXT_DIV_NAME} div`, async function () {
+  test(`pressing the "interop-get-external-data-button" calls ${INTEROP_GET_TEXT_METHOD_NAME} and updates the ${INTEROP_GET_TEXT_DIV_NAME} div with the result of the interop method`, async function () {
     const result = { text: "Hello" };
 
     // register a method that will be invoked when the button is pressed
     await page.evaluate((method, result) => {
-      console.log(`registering ${method}`);
       (window as any).glue.interop.register(method, () => {
-        console.log(`calling`);
         return result;
       });
     }, INTEROP_GET_TEXT_METHOD_NAME, result);

@@ -13,7 +13,7 @@ The repo contains a simple Glue42 enabled application that does the following:
   * displays the context of the currently selected color channel in a div
   * when the "Update channel" button is clicked updates the context of the current color channel
 
-Those functionalities aim to demonstrate simple Glue42 integrations that are typical for a real Glue42 enabled application.
+Those functionalities aim to be close to a real usage of Glue42 in web apps, however they are simplified so they can fit into a sample.
 
 ## Structure
 * src - the source of the sample app
@@ -50,9 +50,36 @@ Currently the mock has partial support for:
 The mock code should be moved into your application and can be extended/modified to support your app in a better way.
 
 ## Tests
-We use puppeteer to test the app in this sample, however the mock is not tied up to puppeteer and can be used with any other 
+We use puppeteer to test the app in this sample, however the mock is not tied up to puppeteer and can be used other tools.
 
-To run the tests use
+Let's dissect one of the tests that verifies that when a button is pressed external interop method is called and a div is updated with the result of that method
+
+As a first step we register a new interop method that will be invoked by the web. We access the mocked glue which is attached to the window object to do so:
+
+```javascript
+await page.evaluate((method, result) => {
+    (window as any).glue.interop.register(method, () => {
+        return result;
+    });
+}, INTEROP_GET_TEXT_METHOD_NAME, result);
+```
+
+Then we simulate a button click - this should call the method registered before and update the div in the page
+
+```javascript
+// press the button
+await page.click("#interop-get-external-data-button");
+```
+
+As a last step we verify that this actually happened by extracting the text in the div and comparing it to the result returned by the interop method
+```javascript
+// get the div text and compare
+const element = await page.$(`#${INTEROP_GET_TEXT_DIV_NAME}`);
+const innerText = await page.evaluate(element => element.innerText, element);
+expect(innerText).toEqual(JSON.stringify(result));
+```
+
+## Running the tests
 ```script
 npm i 
 npm test
