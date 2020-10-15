@@ -1,30 +1,30 @@
 <head>
     <!-- <script src="../../node_modules/@glue42/desktop/dist/desktop.umd.js"></script> -->
     <script src="main.ts"></script>
-    <title>Glue Mock Demo app</title>
+    <title>Glue42 Mock Demo</title>
 </head>
 <body>
     <pre>
-        This is a simple glue enabled application that uses interop and channels. It does four things:
+        This is a simple Glue42 enabled application that uses Interop and Channels. It has the following functionalities:
     </pre>
     <div>
-        <pre>1. Show data when the "set-text" interop method is invoked here </pre>
+        <pre>1. Shows the data from invoking the "set-text" Interop method here:</pre>
         <div id="interop-register-div"></div>
     </div>
 
     <div>
-        <pre>2. Get data from external "get-text" interop method by pressing the button</pre>
-        <button id="interop-get-external-data-button" onclick="onInteropInvokeButton()">Get external data</button>
+        <pre>2. Shows data from invoking the external "get-text" Interop method by clicking the button.</pre>
+        <button id="interop-get-external-data-button" onclick="onInteropInvokeButton()">Get External Data</button>
         <div id="interop-invoke-div"></div>    
     </div>
 
     <div>
-        <pre>3. Show the data in currently selected color channel</pre>
+        <pre>3. Shows the data in the currently selected color Channel:</pre>
         <div id="channel-data-div"></div>    
     </div>
 
     <div>
-        <pre>4. Update the data in current color channel (add a time property with the current time)</pre>
-        <button id="channel-update-button" onclick="onChannelUpdateButton()">Update channel</button>
+        <pre>4. Updates the data in the current color Channel (adds a `time` property to the Channel context with the current time as a value)</pre>
+        <button id="channel-update-button" onclick="onChannelUpdateButton()">Update Channel</button>
     </div>
 </body>

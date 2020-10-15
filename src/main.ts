@@ -7,10 +7,10 @@ let glue: Glue42.Glue;
 
 (async function main() {
     if (window.glue42gd) {
-        // running in Glue42
+        // Running in Glue42.
         glue = await GlueFactory({ channels: true });
     } else {
-        // running outside of Glue42
+        // Running outside Glue42.
         glue = new MockGlueJS() as unknown as Glue42.Glue;
     }
     (window as any).glue = glue;
@@ -26,9 +26,3 @@ let glue: Glue42.Glue;
 (window as any).onChannelUpdateButton = () => {
     updateChannel(glue);
 }
-
-
-
-
-
-
