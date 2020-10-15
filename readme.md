@@ -33,7 +33,7 @@ The sample Glue42 enabled application has the following functionalities:
 
 - Channels:
     - displays the context of the currently selected color Channel in a `<div>`;
-    - when the "Update channel" button is clicked, the context of the currently selected Color channel is updated;
+    - when the "Update Channel" button is clicked, the context of the currently selected color Channel is updated;
 
 These functionalities showcase a real (although simplified) usage of Glue42 in web apps.
 
@@ -57,9 +57,9 @@ if (window.glue42gd) {
 
 # Tests
 
-[Puppeteer](https://developers.google.com/web/tools/puppeteer) is used to test the sample Glue42 enabled app, however, the Glue42 mock is not tied up to Puppeteer and can be used with other tools as well.
+[Puppeteer](https://developers.google.com/web/tools/puppeteer) is used to test the sample Glue42 enabled app. However, the Glue42 mock is not tied up to Puppeteer and can be used with other tools as well.
 
-See below the step-by-step example of creating a test for your app. The example uses one of the tests in this repo which verifies that pressing a button on the page updates a `<div>` with the result of an external Interop method.
+See below the step-by-step example of creating a test for your app. The example uses one of the tests in this repo which verifies that pressing a button on the page updates a `<div>` with the result from invoking an external Interop method.
 
 1. [Register](https://docs.glue42.com/glue42-concepts/data-sharing-between-apps/interop/javascript/index.html#method_registration) a new Interop method that will be invoked by the web. Access the mocked Glue42 attached to the `window` object to do so:
 
@@ -97,4 +97,4 @@ npm install
 npm test
 ```
 
-*The provided tests are executed by using a "headless" browser (no browser UI). If you want to see the results from the tests in the app, use the `headless: false` setting when launching a browser instance and comment out the `afterAll()` and `afterEach()` statements in the test files to avoid closing the browser pages and the browser itself.*
+*The provided tests are executed by launching a "headless" browser (no browser UI). If you want to see the results from the tests in the app, use the `headless: false` setting when launching a browser instance and comment out the `afterAll()` and `afterEach()` statements in the test files to avoid closing the browser pages and the browser itself.*
