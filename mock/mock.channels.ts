@@ -4,7 +4,8 @@ type Callback = ((data: any, context: Glue42.Channels.ChannelContext, updaterId:
 
 export class MockGlueChannels implements Partial<Glue42.Channels.API> {
     private allChannelNames: string[] = ["Red", "Green", "Blue"];
-    private currentChannel: string; // not on a channel until you join one
+    // Not on a Channel until you join one.
+    private currentChannel: string;
     private data: { [key: string]: any } = {};
     private callbacks: Callback[] = [];
 
@@ -28,18 +29,18 @@ export class MockGlueChannels implements Partial<Glue42.Channels.API> {
 
         const channelToUpdate = name ?? this.current();
         if (!channelToUpdate){
-            // not on a channel
+            // Not on a Channel.
             return;
         }
-        // create the channel data if missing
+        // Create the Channel data if missing.
         if (!this.data[channelToUpdate]) {
             this.data[channelToUpdate] = {};
         }
-        // update the props coming from data
+        // Update the props coming from data.
         for (const key of Object.keys(data)) {
             this.data[channelToUpdate][key] = data[key];
         }
-        // notify subscribers
+        // Notify subscribers.
         if (channelToUpdate === this.current()) {
             this.notifyAll();
             return Promise.resolve();
@@ -65,11 +66,11 @@ export class MockGlueChannels implements Partial<Glue42.Channels.API> {
 
     private notify(callback: Callback) {
         if (!this.current()) {
-            // not on a channel
+            // Not on a Channel.
             return;
         }
 
-        // get the data for the current channel
+        // Get the data for the current Channel.
         const data = this.data[this.current()] ?? {};
         try {
             callback(data, { data, name: this.current(), meta: {} }, "1");

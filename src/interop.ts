@@ -5,7 +5,7 @@ export const INTEROP_SET_TEXT_DIV_NAME = "interop-register-div";
 export const INTEROP_GET_TEXT_DIV_NAME = "interop-invoke-div";
 
 /**
- * this function registers an interop method and updates the interop-register DIV with the argument of the invocation
+ * This function registers an Interop method and updates the "#interop-register-div" with the argument of the invocation.
  */
 export function registerInterop(glue: Glue42.Glue) {    
     glue.interop.register(INTEROP_SET_TEXT_METHOD_NAME, (args) => {
@@ -15,7 +15,7 @@ export function registerInterop(glue: Glue42.Glue) {
 }
 
 /**
- * this function invokes an interop method and updates the interop-invoke DIV with the result of the invocation
+ * This function invokes an Interop method and updates the "#interop-invoke-div" with the result from the invocation.
  */
 export async function getExternalInteropData(glue: Glue42.Glue) {
     const result = await glue.interop.invoke(INTEROP_GET_TEXT_METHOD_NAME);

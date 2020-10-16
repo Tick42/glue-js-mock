@@ -9,5 +9,3 @@ export class MockGlueJS {
     public channels = new MockGlueChannels();
     public contexts = new MockGlueContexts();
 }
-
-
